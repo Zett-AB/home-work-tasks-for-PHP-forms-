@@ -137,20 +137,50 @@
             <p>
                 Первоначально нужно написать код PHP для связывания/подключения к БД.<br>
                 И так пишем код для подключения к нашей БД.<br>
-                ?<br>
+                ?php<br>
                 $mysqli=new mesqli('localhost','root','','home work forms');<br>
                 if(mysqli_connect_errno()){<br>
-                print("Соединение не установлено", mysqli_connect_error());<br>
+                printf("Соединение не установлено", mysqli_connect_error());<br>
                 exit();<br>
                 }<br>
+                $mysqli->set_charset('utf8');<br>
+                $mysqli->close();<br>
                 ?>
             </p>
             <p>
                 После написания кода подключения к нашей БД, пишем код по выводу данных/информации из нашей таблицы music в браузере.<br>
                 Наш код будет следующим:<br>
+                $query=$mysqli->query('select * from music');<br>
+                while($row=mysqli_fetch_assoc($query)){<br>
+                echo $row[name].' - '.$row[author]."br>";<br>
+                }
             </p>
-            <p></p>
-            <p></p>
+            <p>
+                Все вот и весь наш код для вывода информации/данных из нашей таблицы music.<br>
+                Результат смотрим ниже.
+            </p>
+            <div class="code_php">
+                <?php
+                $mysqli = new mysqli('localhost', 'root', '', 'home work forms');
+
+                if (mysqli_connect_errno()) {
+                    printf("Соединение не установлено", mysqli_connect_error());
+                    exit();
+                }
+                $mysqli->set_charset('utf8');
+
+                $query = $mysqli->query('select * from music');
+                while ($row = mysqli_fetch_assoc($query)) {
+                    echo $row['name'] . ' - ' . $row['author'] . "<br>";
+                }
+
+                $mysqli->close();
+                ?>
+            </div>
+            <p>
+                Первая часть задания, а именно задания с 1 по 3 выполнены полностью.<br>
+                Теперь переходим к более сложному заданию 4, где нам нужно создать формы HTML и написать код для внесения данных/информации в нашу таблицу music БД.
+            </p>
         </section>
         <section class="task_4"></section>
     </main>

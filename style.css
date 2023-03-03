@@ -27,3 +27,14 @@
         font-style: normal; 
         font-weight: normal;
 }
+h4 {
+    font-family: Philosopher;
+    font-size: 27px;
+}
+p {
+    font-family: Montserrat Alternates;
+    font-size: 18px;
+}
+.code_php {
+    border: 1px solid rgb(0, 153, 255);
+}

@@ -1,33 +1,3 @@
-<?php
-
-
-if (isset($_POST['name']) && isset($_POST['author'])) {
-    $name = $_POST['name'];
-    $author = $_POST['author'];
-
-    $mysqli = new mysqli('localhost', 'root', '', 'home work forms');
-
-    if (mysqli_connect_errno()) {
-        printf("Соединение не установлено", mysqli_connect_error());
-        exit();
-    }
-
-    $mysqli->set_charset('utf8');
-
-
-    $result = $mysqli->query("INSERT INTO music VALUES(null,'$name','$author',now())");
-
-    if ($result == true) {
-        echo "<p class='form-page'>" . "Информация занесена в базу данных" . "</p>";
-    } else {
-        echo "<p class='form-page'>" . "Информация не занесена в базу данных" . "</p>";
-    }
-
-    $mysqli->close();
-}
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +8,7 @@ if (isset($_POST['name']) && isset($_POST['author'])) {
     <title>Home Work PHP 1</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="player.css">
 </head>
 
 <body>
@@ -50,15 +21,48 @@ if (isset($_POST['name']) && isset($_POST['author'])) {
             <input type="submit" value="добавить">
         </fieldset>
     </form> -->
-    <div class="button-home">
-        <button class="btn-home">Пустышка</button>
-        <a href="index.php" style="font-family: Philosopher; font-size:20px; color:blue;">вернуться обратно</a>
-    </div>
-    <div>
-        <p>
-            проверка
-        </p>
-    </div>
+    <section>
+        <?php
+
+
+        if (isset($_POST['name']) && isset($_POST['author'])) {
+            $name = $_POST['name'];
+            $author = $_POST['author'];
+
+            $mysqli = new mysqli('localhost', 'root', '', 'home work forms');
+
+            if (mysqli_connect_errno()) {
+                printf("Соединение не установлено", mysqli_connect_error());
+                exit();
+            }
+
+            $mysqli->set_charset('utf8');
+
+
+            $result = $mysqli->query("INSERT INTO music VALUES(null,'$name','$author',now())");
+
+            if ($result == true) {
+                echo "<p class='form-page'>" . "Информация занесена в базу данных" . "</p>";
+            } else {
+                echo "<p class='form-page'>" . "Информация не занесена в базу данных" . "</p>";
+            }
+
+            $mysqli->close();
+        }
+
+
+        ?>
+        <div class="button-home">
+            <button class="btn-home" type="onclick"><a href="index.php#db_see">смотреть список</a></button><br>
+            <a class="btnhome" href="index.php#db-field">внести новые данные</a>
+        </div>
+        <div>
+            <p>
+                проверка
+            </p>
+        </div>
+    </section>
+
 
 
 

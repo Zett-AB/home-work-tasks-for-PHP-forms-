@@ -159,7 +159,7 @@
                 Все вот и весь наш код для вывода информации/данных из нашей таблицы music.<br>
                 Результат смотрим ниже.
             </p>
-            <div class="code_php">
+            <div class="code_php" id="db_see">
                 <?php
                 $mysqli = new mysqli('localhost', 'root', '', 'home work forms');
 
@@ -214,7 +214,7 @@
             <P>
                 Теперь ниже пишем наш HTML код формы и смотрим, что получилось.
             </P>
-            <form action="player.php" method="post">
+            <form action="player.php" method="post" id="db-field">
                 <fieldset>
                     <legend>Форма для заполнения данных в БД</legend>
                     <input type="text" name="name" placeholder="название композиции" required></input>
